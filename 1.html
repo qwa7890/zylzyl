@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <title>zylzyl为学校提供视频网站</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 0;
+            font-family: 微软雅黑, Arial, sans-serif;
+            zoom: 1;
+        }
+        
+
+        /* 顶部导航栏 */
+        .top-nav {
+            width: 100%;
+            height: 45px;
+            line-height: 45px;
+            background: #eee;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+        .nav-btn {
+            display: inline-block;
+            padding: 0 20px;
+            height: 100%;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            cursor: pointer;
+            color: #000;
+            text-decoration: none;
+        }
+        .nav-btn:hover {
+            background: #ddd;
+            color: #0066cc;
+        }
+
+        .notice {
+            font-size: 16px;
+            color: #666;
+            margin: 8px 0;
+        }
+        h1 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .tips {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        /* 下面一行5个按钮 */
+        #selectArea {
+            width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            zoom: 1;
+        }
+        .item {
+            width: 18%;
+            display: inline-block;
+            vertical-align: top;
+            margin: 8px 1%;
+        }
+        .btn {
+            width: 100%;
+            height: 110px;
+            background: #fff;
+            border: 1px solid #999;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .label {
+            margin-top: 5px;
+            font-size: 15px;
+            color: #333;
+        }
+
+        /* 替换为远程图片地址 */
+        .btn1::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d1.png'); }
+        .btn2::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d2.png'); }
+        .btn3::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d3.png'); }
+        .btn4::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d4.png'); }
+        .btn5::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d5.png'); }
+        .btn6::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d6.png'); }
+        .btn7::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d7.png'); }
+        .btn8::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d8.png'); }
+        .btn9::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d9.png'); }
+        .btn10::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d10.png'); }
+        .btn11::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d11.png'); }
+        .btn12::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d12.png'); }
+        .btn13::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d13.png'); }
+        .btn14::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d14.png'); }
+        .btn15::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d15.png'); }
+        .btn16::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d16.png'); }
+        .btn17::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d17.png'); }
+        .btn18::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d18.png'); }
+        .btn19::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d19.png'); }
+        .btn20::before { background-image: url('https://zylzyl.netlify.app/jietu/2/d20.png'); }
+
+        #videoArea {
+            display: none;
+            margin: 20px auto;
+            zoom: 1;
+        }
+        #backBtn {
+            width: 160px;
+            height: 36px;
+            line-height: 36px;
+            background: #CCCCCC;
+            border: 1px solid #999999;
+            font-size: 14px;
+            margin: 15px auto;
+            cursor: pointer;
+            display: none;
+        }
+        #myVideo {
+            border: none;
+            zoom: 1;
+            width: 640px;
+            height: 360px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ======================
+         导航 → 打开 wangye 文件夹里的本地网页
+    ======================= -->
+    <div class="top-nav">
+        <img src="zylzyl.png" style="position:absolute; left:250px; top:-10px; height:50px; border:0;" />
+        <a class="nav-btn" href="index1.html" target="_blank">首页</a>
+        <a class="nav-btn" href="1.html" target="_blank">脱缰凯</a>
+        <a class="nav-btn" href="2.html" target="_blank">张开</a>
+        <a class="nav-btn" href="3.html" target="_blank">一串大福</a>
+        <a class="nav-btn" href="4.html" target="_blank">电影</a>
+        <a class="nav-btn" href="5.html" target="_blank">术曲</a>
+    </div>
+    <!-- 下面图片按钮（播放视频） -->
+    <div id="selectArea">
+        <div class="item">
+            <button class="btn btn1" onclick="playVideo(1)"></button>
+            <div class="label">我坠爱小狗了</div>
+        </div>
+        <div class="item">
+            <button class="btn btn2" onclick="playVideo(2)"></button>
+            <div class="label">板块大挪移</div>
+        </div>
+        <div class="item">
+            <button class="btn btn3" onclick="playVideo(3)"></button>
+            <div class="label">放假快乐2</div>
+        </div>
+        <div class="item">
+            <button class="btn btn4" onclick="playVideo(4)"></button>
+            <div class="label">整点</div>
+        </div>
+        <div class="item">
+            <button class="btn btn5" onclick="playVideo(5)"></button>
+            <div class="label">灯下黑</div>
+        </div>
+
+        <div class="item">
+            <button class="btn btn6" onclick="playVideo(6)"></button>
+            <div class="label">放学大扫除</div>
+        </div>
+        <div class="item">
+            <button class="btn btn7" onclick="playVideo(7)"></button>
+            <div class="label">新校长1</div>
+        </div>
+        <div class="item">
+            <button class="btn btn8" onclick="playVideo(8)"></button>
+            <div class="label">新校长2</div>
+        </div>
+        <div class="item">
+            <button class="btn btn9" onclick="playVideo(9)"></button>
+            <div class="label">新校长3</div>
+        </div>
+        <div class="item">
+            <button class="btn btn10" onclick="playVideo(10)"></button>
+            <div class="label">新校长4</div>
+        </div>
+
+        <div class="item">
+            <button class="btn btn11" onclick="playVideo(11)"></button>
+            <div class="label">新校长5</div>
+        </div>
+        <div class="item">
+            <button class="btn btn12" onclick="playVideo(12)"></button>
+            <div class="label">新校长6</div>
+        </div>
+        <div class="item">
+            <button class="btn btn13" onclick="playVideo(13)"></button>
+            <div class="label">新校长7</div>
+        </div>
+        <div class="item">
+            <button class="btn btn14" onclick="playVideo(14)"></button>
+            <div class="label">新校长8</div>
+        </div>
+        <div class="item">
+            <button class="btn btn15" onclick="playVideo(15)"></button>
+            <div class="label">新校长9</div>
+        </div>
+
+        <div class="item">
+            <button class="btn btn16" onclick="playVideo(16)"></button>
+            <div class="label">新校长10</div>
+        </div>
+        <div class="item">
+            <button class="btn btn17" onclick="playVideo(17)"></button>
+            <div class="label">新校长11</div>
+        </div>
+        <div class="item">
+            <button class="btn btn18" onclick="playVideo(18)"></button>
+            <div class="label">新校长12</div>
+        </div>
+        <div class="item">
+            <button class="btn btn19" onclick="playVideo(19)"></button>
+            <div class="label">新校长13</div>
+        </div>
+        <div class="item">
+            <button class="btn btn20" onclick="playVideo(20)"></button>
+            <div class="label">新校长14</div>
+        </div>
+    </div>
+
+    <div id="videoArea">
+        <video id="myVideo" controls="controls"></video>
+    </div>
+
+    <button id="backBtn" onclick="goBack()">返回选择页面</button>
+
+    <script type="text/javascript">
+        var selectArea, videoArea, backBtn, myVideo;
+        window.onload = function(){
+            selectArea = document.getElementById("selectArea");
+            videoArea = document.getElementById("videoArea");
+            backBtn = document.getElementById("backBtn");
+            myVideo = document.getElementById("myVideo");
+        };
+
+        // 修改：给每个视频路径添加 shiping/ 前缀
+        var videoList = [
+            "shiping/2/video1.mp4","shiping/2/video2.mp4","shiping/2/video3.mp4","shiping/2/video4.mp4","shiping/2/video5.mp4",
+            "shiping/2/video6.mp4","shiping/2/video7.mp4","shiping/2/video8.mp4","shiping/2/video9.mp4","shiping/2/video10.mp4",
+            "shiping/2/video11.mp4","shiping/2/video12.mp4","shiping/2/video13.mp4","shiping/2/video14.mp4","shiping/2/video15.mp4",
+            "shiping/2/video16.mp4","shiping/2/video17.mp4","shiping/2/video18.mp4","shiping/2/video19.mp4","shiping/2/video20.mp4"
+        ];
+
+        function playVideo(index){
+            // 【优化修复2】增加索引合法性判断，避免数组越界导致的路径错误
+            if(index < 1 || index > videoList.length){
+                alert("无效的视频选择！");
+                return;
+            }
+            var url = videoList[index-1];
+            myVideo.src = url;
+            selectArea.style.display = "none";
+            videoArea.style.display = "block";
+            backBtn.style.display = "block";
+            try{myVideo.load();myVideo.play();}catch(e){
+                // 【优化修复3】增加播放失败提示，便于排查视频路径问题
+                alert("视频播放失败，请检查视频文件路径！");
+                console.error("视频播放错误：", e);
+            }
+        }
+
+        function goBack(){
+            videoArea.style.display = "none";
+            backBtn.style.display = "none";
+            selectArea.style.display = "block";
+            try{myVideo.pause(); myVideo.src = "";}catch(e){}
+        }
+    </script>
+</body>
+</html>
